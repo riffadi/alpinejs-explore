@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/tailwindcss@1.0/dist/tailwind.min.css">
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.js" defer></script>
+    </head>
+    <body class="bg-gray-400 text-gray-800">
+        <div 
+            class="container mx-auto w-1/2"
+            x-data="{ quote:'' }"
+            x-init="
+                fetch('https://api.kanye.rest')
+                    .then(response => response.json())
+                    .then(data => quote = data.quote)
+            "
+        >
+            <div class="flex items-center text-center justify-center h-screen text-4xl italic"
+            x-text="`&quot;${quote}&quot;`">Quote goes here</div>
+        </div>
+    </body>
+</html>
